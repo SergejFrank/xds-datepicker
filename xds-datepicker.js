@@ -39,6 +39,19 @@ function Datepicker(elem, options) {
         });
     };
 
+    var changeMonth = function (interval) {
+        var newDate = new Date(instance.startDate.valueOf());
+        newDate.setMonth(instance.startDate.getMonth()+interval);
+
+
+        if((instance.minDate && newDate < instance.minDate) || (instance.maxDate && newDate > instance.maxDate ) ){
+            return
+        }
+
+        instance.startDate = newDate;
+        updateCal();
+    }
+
 
     var createDays = function(){
         instance.cal.tableBody.innerHTML = "";
@@ -65,7 +78,7 @@ function Datepicker(elem, options) {
                 td.setAttribute("data-value",dateIterator.toDateString());
 
                 // check if weekday is disabled
-                if(instance.disabledWeekdays.indexOf(dateIterator.getDay())>=0){
+                if(instance.disabledWeekdays.indexOf(dateIterator.getDay())>=0 || dateIterator < instance.minDate || dateIterator > instance.maxDate){
                     td.classList.add("disabled");
                 }
 
@@ -127,7 +140,10 @@ function Datepicker(elem, options) {
         cal: null,
         disabledWeekdays: options.disabledWeekdays || [],
         changeSelectedDate: changeSelectedDate,
-        toString: options.customDateFormat || false
+        changeMonth: changeMonth,
+        toString: options.customDateFormat || false,
+        minDate: options.minDate || false,
+        maxDate: options.maxDate || false
     };
 
     options = sanitizeOptions();
@@ -164,13 +180,11 @@ function Datepicker(elem, options) {
         instance.cal.table.appendChild(instance.cal.tableBody);
 
         instance.cal.leftButton.addEventListener('click', function () {
-            instance.startDate.setMonth(instance.startDate.getMonth()-1);
-            updateCal();
+            changeMonth(-1);
         });
 
         instance.cal.rightButton.addEventListener('click', function () {
-            instance.startDate.setMonth(instance.startDate.getMonth()+1);
-            updateCal();
+            instance.changeMonth(1);
         });
 
         //insert after input
