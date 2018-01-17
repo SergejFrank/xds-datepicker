@@ -10,9 +10,9 @@ function Datepicker(elem, options) {
             return {}
         }
 
-        if(options.hasOwnProperty("days") && options.days.length !== 7){
-            console.error("\"days\" must be an array with 7 elements.");
-            options.days = false;
+        if(options.hasOwnProperty("weekdays") && options.weekdays.length !== 7){
+            console.error("\"weekdays\" must be an array with 7 elements.");
+            options.weekdays = false;
         }
 
         if(options.hasOwnProperty("months") && options.months.length !== 12){
@@ -32,7 +32,7 @@ function Datepicker(elem, options) {
 
     var createTableHead = function(){
         instance.cal.tableHead.innerHTML = "";
-        [].forEach.call(instance.days, function(day) {
+        [].forEach.call(instance.weekdays, function(day) {
             var th = document.createElement("th");
             th.textContent = day;
             instance.cal.tableHead.appendChild(th);
@@ -94,8 +94,8 @@ function Datepicker(elem, options) {
     var changeSelectedDate = function(date){
         instance.selectedDate = date;
         var val = date.toDateString();
-        if(instance.customDateFormat){
-            val = instance.customDateFormat(date);
+        if(instance.toString){
+            val = instance.toString(date);
         }
         instance.input.value = val;
         updateCal();
@@ -103,7 +103,7 @@ function Datepicker(elem, options) {
 
 
     var defaults = {
-        days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         months: ['January','February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         classes: {
             wrapper: "xds-calendar",
@@ -117,7 +117,7 @@ function Datepicker(elem, options) {
 
 
     var instance = {
-        days: options.days || defaults.days,
+        weekdays: options.weekdays || defaults.weekdays,
         months: options.months || defaults.months,
         startDate: options.startDate || new Date(),
         selectedDate: options.selectedDate || new Date(options.startDate.getTime()) || new Date(),
@@ -127,7 +127,7 @@ function Datepicker(elem, options) {
         cal: null,
         disabledWeekdays: options.disabledWeekdays || [],
         changeSelectedDate: changeSelectedDate,
-        customDateFormat: options.customDateFormat || false
+        toString: options.customDateFormat || false
     };
 
     options = sanitizeOptions();
@@ -178,8 +178,8 @@ function Datepicker(elem, options) {
 
         console.log(instance.startingWeekDay);
         for(var i = 0; i<instance.startingWeekDay; i++){
-            var tmp = instance.days.shift();
-            instance.days.push(tmp);
+            var tmp = instance.weekdays.shift();
+            instance.weekdays.push(tmp);
         }
 
         instance.changeSelectedDate(instance.selectedDate);
