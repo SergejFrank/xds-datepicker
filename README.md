@@ -62,3 +62,5 @@ xds-datepicker has many useful options:
 * `startDate` the initial date to view when first opened
 * `disabledWeekdays`  disallow selection of Saturdays or Sundays (0: Sunday, 1: Monday, etc)
 * `customDateFormat`  the default output format for `.toString()` and `field` value
+* `minDate` the minimum/earliest date that can be selected (this should be a native Date object - e.g. `new Date()` )
+* `maxDate` the maximum/latest date that can be selected (this should be a native Date object - e.g. `new Date()`)
