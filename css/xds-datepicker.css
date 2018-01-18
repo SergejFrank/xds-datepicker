@@ -1,6 +1,7 @@
 .xds-datepicker{
     display: inline-block;
 }
+
 .xds-datepicker-input {
     width: 240px;
     height: 32px;
@@ -140,17 +141,10 @@
     color: #3296FF;
 }
 
-.xds-calendar .td.selected {
-    background: #777777;
-    color: #FFFFFF;
-    font-weight: bold;
-}
-
 .xds-calendar .td.disabled {
     color: #cccccc;
     background-color: #FAFAFA;
 }
-
 
 .xds-calendar .td.range {
     background: #999999;
@@ -158,6 +152,12 @@
     font-weight: bold;
 }
 
+
+.xds-calendar .td.selected {
+    background: #777777;
+    color: #FFFFFF;
+    font-weight: bold;
+}
 
 .xds-calendar .td:not(.disabled):hover {
     color: #767676;
