@@ -64,3 +64,5 @@ xds-datepicker has many useful options:
 * `customDateFormat`  the default output format for `.toString()` and `field` value
 * `minDate` the minimum/earliest date that can be selected (this should be a native Date object - e.g. `new Date()` )
 * `maxDate` the maximum/latest date that can be selected (this should be a native Date object - e.g. `new Date()`)
+* `placeholder` the short hint is displayed in the input field before the user enters a value.
+

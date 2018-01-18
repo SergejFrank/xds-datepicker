@@ -1,0 +1,167 @@
+.xds-datepicker{
+    display: inline-block;
+}
+.xds-datepicker-input {
+    width: 240px;
+    height: 32px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    color: #555555;
+    font-size: 13px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    font-family: "OttoSans", sans-serif;
+    background-color: #FFFFFF;
+}
+
+.xds-datepicker-input span {
+    line-height: 34px;
+}
+
+.xds-datepicker-input .placeholder {
+    color: #999999;
+}
+
+.xds-datepicker-icon {
+    border-radius: 3px;
+    height: 32px;
+    width: 32px;
+    background-color: #cccccc;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-image: url("../images/xds-calendar-icon.png");
+}
+
+.open .xds-datepicker-icon {
+    background-color: #555555;
+}
+
+.xds-calendar {
+    font-family: "OttoSans", sans-serif;
+    display: none;
+    margin-top: 3px;
+    position: absolute;
+    width: 240px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+    padding: 0 7px 8px 7px;
+    box-sizing: border-box;
+}
+
+.open .xds-calendar {
+    display: block;
+    z-index: 2;
+}
+
+.xds-calendar .header {
+    font-family: "OttoSans", sans-serif;
+    font-weight: bold;
+    position: relative;
+    color: #222222;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+.xds-calendar .header span {
+    display: inline-block;
+    line-height: 32px;
+}
+
+.xds-calendar .header .button {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    background-image: url("../images/xds-chevron.png");
+}
+
+.xds-calendar .header .left.button {
+    left: 0;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.xds-calendar .header .right.button {
+    right: 0;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.xds-calendar .header .month-year {
+    width: 100%;
+    text-align: center;
+}
+
+.xds-calendar .table {
+    width: 100%;
+}
+
+.xds-calendar .th {
+    color: #222222;
+    font-weight: normal;
+    font-size: 11px;
+    float: left;
+}
+
+.xds-calendar .td, .xds-calendar .th {
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    float: left;
+}
+
+.xds-calendar .td {
+    color: #555555;
+    background-color: #F5F5F5;
+    box-shadow: 0 0 0 1px #FFFFFF inset;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.xds-calendar .td.today {
+    font-weight: bold;
+    color: #3296FF;
+}
+
+.xds-calendar .td.selected {
+    background: #777777;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.xds-calendar .td.disabled {
+    color: #cccccc;
+    background-color: #FAFAFA;
+}
+
+
+.xds-calendar .td.range {
+    background: #999999;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+
+.xds-calendar .td:not(.disabled):hover {
+    color: #767676;
+    background-color: #CCCCCC;
+    cursor: pointer;
+    font-weight: bold;
+}

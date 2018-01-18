@@ -1,0 +1,90 @@
+
+
+
+@charset "UTF-8";
+
+
+
+
+
+/* ==========================================================================
+   XDS
+   ========================================================================== */
+
+
+
+
+
+/* »»» XDS foundation ««« */
+
+
+
+@font-face {
+    font-family: "OttoSans";
+    src: url('fonts/otto-sans.ttf');
+    font-weight: normal; font-style: normal;
+}
+
+@font-face {
+    font-family: 'OttoSans';
+    src: url('fonts/otto-sans-bold.woff') format('woff'),
+    url('fonts/otto-sans-bold.ttf') format('truetype');
+    font-weight: bold; font-style: normal;
+}
+
+	strong	{ font-weight: bold; font-style: normal; }
+
+@font-face {
+    font-family: "OttoSans";
+    src: url('fonts/otto-sans-thin.woff') format('woff'),
+    url('fonts/otto-sans-thin.ttf') format('truetype');
+    font-weight: 100; font-style: normal;
+}
+
+
+
+
+
+html					{  }
+
+body					{
+							
+							margin: 48px 96px 96px 96px; padding: 0;
+							background: #F5F5F5;
+							color: #777;
+							font-family: "Helvetica Neue", Arial, sans-serif;
+							font-size: 13px; font-weight: normal; line-height: 1.5;
+							
+						}
+					
+
+
+header, main, footer	{
+							max-width: 960px; margin: 0 0 20px 0; padding: 24px 48px; background: #FFF;
+							box-sizing: border-box; -webkit-box-sizing: border-box;
+						}
+
+header, footer			{ font-size: 24px; font-weight: bold; text-transform: uppercase; }
+footer					{ font-size: 11px; }
+
+
+
+
+/* »»» XDS typography ««« */
+
+p,h1,h2,h3,h4,h5		{ margin: 0 0 1em 0; padding: 0; }
+
+h1,h2,h3,h4,h5			{ font-family: "OttoSans"; font-weight: 100; }
+
+
+
+
+
+
+
+
+
+
+
+
+

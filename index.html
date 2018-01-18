@@ -2,9 +2,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="xds-normalize.css" type="text/css" >
-        <link rel="stylesheet" href="xds-datepicker.css" type="text/css" >
-        <script src="xds-datepicker.js"></script>
+        <link rel="stylesheet" href="css/xds-datepicker.css" type="text/css" >
+        <script src="js/xds-datepicker.js"></script>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/-xds-normalize.css">
+        <link rel="stylesheet" href="css/-xds-system.css">
 
         <title>xds-datepicker</title>
     </head>
@@ -12,17 +17,16 @@
     <body>
 
     <div style="padding: 30px">
-        <h1>Formulat</h1>
+        <h1>Datepicker</h1>
 
-        <input placeholder="select a Date" class="datepicker" name="date">
-        <br/>
-        <textarea>
-            Hallo,
+        <h2>Datepicker Date</h2>
+        <input class="datepicker" name="date">
 
-            .
-            .
-            .
-        </textarea>
+        <h2 style="margin-top: 50px;">Datepicker Range</h2>
+        <input class="datepickerStart" name="date">
+        <input class="datepickerEnd" name="date">
+
+
     </div>
 
     <script>
@@ -30,19 +34,37 @@
             return date.getDate()+"."+date.getMonth()+"."+date.getFullYear();
         };
 
-        var options = {
+        var optionsRange = {
             weekdays: ['So','Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
             months: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okr','Nov','Dez'],
             startingWeekDay: 1,
             startDate: new Date("2018/2/16"),
+            selectedDate: new Date("2018/2/16"),
             disabledWeekdays: [0,6],
             customDateFormat: dateFormat,
             minDate: new Date("2017/12/16"),
-            maxDate: new Date("2018/04/16")
+            maxDate: new Date("2018/04/16"),
+            range: {
+                start: document.querySelector(".datepickerStart"),
+                end: document.querySelector(".datepickerEnd")
+            }
         };
 
+        var optionsDate = {
+            elem:document.querySelector(".datepicker"),
+            weekdays: ['So','Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            months: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okr','Nov','Dez'],
+            startingWeekDay: 1,
+            startDate: new Date("2018/2/16"),
+            selectedDate: new Date("2018/2/16"),
+            disabledWeekdays: [0,6],
+            customDateFormat: dateFormat,
+            minDate: new Date("2017/12/16"),
+            maxDate: new Date("2018/04/16"),
+        };
 
-        var xdsDatepicker = Datepicker(document.querySelector(".datepicker"),options);
+        var xdsDatepickerRange = Datepicker(optionsRange);
+        var xdsDatepickerDate = Datepicker(optionsDate);
     </script>
 
 
