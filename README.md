@@ -28,7 +28,8 @@ Start with a simple HTML `<select>`:
 
 In HTML with the `script` tag:
 ```js
-var xdsDatepicker = Datepicker(document.querySelector(".datepicker"));
+
+var xdsDatepicker = Datepicker({elem:document.querySelector(".datepicker")});
 ```
 
 
@@ -41,6 +42,7 @@ var dateFormat = function(date){
 };
 
 var options = {
+    elem: document.querySelector(".datepicker"),
     weekdays: ['So','Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     months: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okr','Nov','Dez'],
     startingWeekDay: 1,
@@ -49,13 +51,13 @@ var options = {
     customDateFormat: dateFormat
 };
 
-
-var xdsDatepicker = Datepicker(document.querySelector(".datepicker"),options);
+var xdsDatepicker = Datepicker(options);
 ```
 
 As the examples demonstrate above
 xds-datepicker has many useful options:
 
+* `elem` the Input field that gets replaced
 * `weekdays` language defaults for weekday names `['So','Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']`
 * `months` language defaults for month names `['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okr','Nov','Dez']`
 * `startingWeekDay` first day of the week (0: Sunday, 1: Monday, etc)
@@ -65,4 +67,5 @@ xds-datepicker has many useful options:
 * `minDate` the minimum/earliest date that can be selected (this should be a native Date object - e.g. `new Date()` )
 * `maxDate` the maximum/latest date that can be selected (this should be a native Date object - e.g. `new Date()`)
 * `placeholder` the short hint is displayed in the input field before the user enters a value.
+* `range` the start and end Input field as an Object range: `{start: <input>, end: <input>}`
 
