@@ -44,7 +44,6 @@ function Datepicker(options) {
         });
     };
 
-
     var createTableHead = function(cal){
         cal.tableHead.innerHTML = "";
         [].forEach.call(instance.weekdays, function(day) {
@@ -55,9 +54,9 @@ function Datepicker(options) {
         });
     };
 
-    var changeMonth = function (interval) {
+    var changeMonth = function (delta) {
         var newDate = new Date(instance.startDate.valueOf());
-        newDate.setMonth(instance.startDate.getMonth()+interval);
+        newDate.setMonth(instance.startDate.getMonth()+delta);
 
         if(!isInRange(newDate)){
             return
@@ -73,7 +72,6 @@ function Datepicker(options) {
         var dateIterator = new Date(instance.startDate.getFullYear() + "/" + (instance.startDate.getMonth()+1) + "-01");
         var skipDays = mod((dateIterator.getDay()-instance.startingWeekDay),7);
 
-
         var dayCount = 1;
         var tr = null;
         var sameMonth = true;
@@ -85,11 +83,13 @@ function Datepicker(options) {
                 tr.classList.add("tr");
                 cal.tableBody.appendChild(tr);
             }
+
+
             var td = document.createElement("div");
             td.classList.add("disabled");
             td.classList.add("td");
 
-            //start at first weekday of Month
+            //start date counting at first weekday of Month
             if(dayCount>skipDays && sameMonth){
 
                 //get day with leading zero
@@ -147,11 +147,11 @@ function Datepicker(options) {
                     td.classList.add("selected");
                 }
 
-                if(cal == instance.calenders[0] &&  instance.calenders[1] && instance.calenders[1].date && tmpDate > instance.calenders[1].date ){
+                if(cal === instance.calenders[0] &&  instance.calenders[1] && instance.calenders[1].date && tmpDate > instance.calenders[1].date ){
                     td.classList.add("disabled");
                 }
 
-                if(cal == instance.calenders[1] && tmpDate < instance.calenders[0].date ){
+                if(cal === instance.calenders[1] && tmpDate < instance.calenders[0].date ){
                     td.classList.add("disabled");
                 }
 
@@ -288,11 +288,10 @@ function Datepicker(options) {
             }
         });
 
-        return cal
-    }
+        return cal;
+    };
 
     var initialize = function () {
-
         for(var i = 0; i<instance.startingWeekDay; i++){
             var tmp = instance.weekdays.shift();
             instance.weekdays.push(tmp);
@@ -300,15 +299,16 @@ function Datepicker(options) {
 
         instance.calenders.push(createCal());
 
-
         if(instance.range){
             instance.calenders.push(createCal());
             instance.selectedDate = null;
 
+            //start date
             instance.range.start.parentNode.insertBefore(instance.calenders[0].wrapper, instance.range.start.nextSibling);
             instance.calenders[0].input = instance.range.start;
             instance.range.start.style.display = 'none';
 
+            //end date
             instance.range.end.parentNode.insertBefore(instance.calenders[1].wrapper, instance.range.end.nextSibling);
             instance.calenders[1].input = instance.range.end;
             instance.range.end.style.display = 'none';
@@ -317,12 +317,10 @@ function Datepicker(options) {
             instance.calenders[0].input = instance.input;
             instance.input.style.display = 'none';
         }
-
         updateCal();
 
     };
 
     initialize();
-
     return instance;
 }
