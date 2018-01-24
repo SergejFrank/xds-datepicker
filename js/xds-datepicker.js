@@ -69,7 +69,7 @@ function Datepicker(options) {
 
     var createDays = function(cal){
         cal.tableBody.innerHTML = "";
-        var dateIterator = new Date(instance.startDate.getFullYear() + "/" + (instance.startDate.getMonth()+1) + "-01");
+        var dateIterator = new Date(instance.startDate.getFullYear(),instance.startDate.getMonth(),1);
         var skipDays = mod((dateIterator.getDay()-instance.startingWeekDay),7);
 
         var dayCount = 1;
